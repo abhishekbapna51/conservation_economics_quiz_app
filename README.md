@@ -40,11 +40,11 @@ Simple design that works smoothly on desktop and mobile.
 ---
 
 ## Project Structure
-src/App.js
-src/index.js
-src/index.css
-src/reportWebVitals.js
-src/questionsData (embedded inside App.js)
+-src/App.js
+-src/index.js
+-src/index.css
+-src/reportWebVitals.js
+-src/questionsData (embedded inside App.js)
 
 ---
 
