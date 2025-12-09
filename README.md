@@ -1,70 +1,90 @@
-# Getting Started with Create React App
+# Conservation Economics Quiz App
+An interactive quiz application built with React to help students practice and revise concepts from Conservation Economics (Weeks 1–12).  
+The app provides instant feedback, score tracking, and a review of incorrect answers in a clean, user-friendly interface.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+### Week-wise Quiz Selection
+Choose any week (1–12) and practice only that week's questions.
 
-### `npm start`
+### Shuffle-All Mode
+Mixes all questions from all weeks for a complete revision test.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Instant Feedback
+- Correct answer highlighted in green  
+- Wrong answer highlighted in red  
+- Automatically moves to the next question after a short delay
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Score Tracking
+Displays current score and total score at the end of the quiz.
 
-### `npm test`
+### Wrong Answer Review
+Shows all incorrectly answered questions with:
+- Your selected answer  
+- The correct answer
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Clean and Responsive UI
+Simple design that works smoothly on desktop and mobile.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Tech Stack
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- React (Hooks: useState, useEffect, useMemo)
+- JavaScript ES6+
+- CSS / Inline Styles
+- Fully client-side with no backend required
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## Project Structure
+src/App.js
+src/index.js
+src/index.css
+src/reportWebVitals.js
+src/questionsData (embedded inside App.js)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Running the Project Locally
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 1. Clone the repository
+```bash
+git clone https://github.com/abhishekbapna51/conservation_economics_quiz_app.git
+```
+### 2. Install dependencies
+```bash
+npm install
+```
+### 3. Start the development server
+```bash
+npm start
+```
+### The app will run at:
+http://localhost:3000
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## How the App Works
+- Select a week or click Shuffle All
+- Start the quiz
+- The quiz begins from question 1
+- Selecting an answer shows instant feedback
+- After a short delay, the next question loads
+- At the end, the score and wrong answers are displayed
+- You may retry the quiz or return to the main screen
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Key Challenges and Solutions
+1. Preventing Double Clicks
+- Users could click options multiple times quickly.
+- Solution: Added an isChecking state flag to temporarily disable option buttons until feedback is shown.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. Smooth Feedback Before Switching Questions
+- The user needed to see right/wrong feedback before moving on.
+- Solution: Used a setTimeout delay to show feedback for 700ms, then updated the question index.
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+3. Managing a Large Question Dataset
+- Handling week-wise questions separately was messy.
+- Solution: Used a unified questionsData object and a prepareQuiz() function to load or shuffle questions efficiently.
